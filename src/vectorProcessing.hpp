@@ -20,9 +20,5 @@ void runVector() {
     quickSort(teste, 0, 15);
     
 
-    for (int i = 0; i < 15; i++) {
-        cout << teste[i] << endl;
-    }
-
 
 }

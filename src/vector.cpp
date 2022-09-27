@@ -3,7 +3,7 @@
 void quickSort(vector <float> &vectorToOrder, int begin, int end)
 {
 	int i = begin, j = end - 1, pivot = vectorToOrder[(begin + end) / 2], aux;
-    
+
 	while(i <= j)
 	{
 		while(vectorToOrder[i] < pivot && i < end)
@@ -27,6 +27,25 @@ void quickSort(vector <float> &vectorToOrder, int begin, int end)
 		quickSort(vectorToOrder, begin, j+1);
 	if(i < end)
 		quickSort(vectorToOrder, i, end);
+}
+
+bool isInVector(vector <float> &vectorToOrder, float value) {
+    int lowerBoundary = 0, upperBoundary = (vectorToOrder.size() - 1), middleBoundary = 0;
+
+    while (lowerBoundary <= upperBoundary) {
+        middleBoundary = ((lowerBoundary + upperBoundary) / 2);
+        if (vectorToOrder[middleBoundary] == value) {
+            return true;
+        }
+
+        if (vectorToOrder[middleBoundary] > value) {
+            upperBoundary = middleBoundary - 1;
+        } else {
+            lowerBoundary = middleBoundary + 1;
+        }
+    }
+
+    return false;
 }
 
 // void readNumbersVector(vector <float> &vectorToSave, string docName) {
