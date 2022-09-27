@@ -18,12 +18,11 @@ struct BinaryTree {
 void initBinaryTree(BinaryTree **t);
 bool isBinaryTreeEmpty(BinaryTree **t);
 void insertBinary(BinaryTree **t, Data content);
-void searchBinary(BinaryTree **t, BinaryTree **aux, Data content);
 int isInBinaryTree(BinaryTree *t, Data content);
 
 void posordem(BinaryTree *t);
 
-void removeBinary(BinaryTree **t, Data content);
+void removeBinary(BinaryTree **t, Data content, int &btRemoveCont);
 void antecessorBinary(BinaryTree **t, BinaryTree *aux);
 // void widthPathBinary(BinaryTree *t);
 
@@ -31,5 +30,6 @@ float read500numbersBinary(BinaryTree **t);
 float read5000numbersBinary(BinaryTree **t);
 float read50000numbersBinary(BinaryTree **t);
 float read500000numbersBinary(BinaryTree **t);
+float searchRemoveFromBinary(BinaryTree **t, int &btRemoveCont);
 
 #endif

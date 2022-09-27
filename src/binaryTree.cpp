@@ -26,31 +26,12 @@ void insertBinary(BinaryTree **t, Data content) {
     }
 }
 
-void searchBinary(BinaryTree **t, BinaryTree **aux, Data content) {
-    if (*t == NULL) {
-        printf("[ERROR]: Node not found!");
-        return;
-    }
-
-    if ((*t)->item.value > content.value) {
-        searchBinary(&(*t)->leftSon, aux, content);
-        return;
-    }
-
-    if ((*t)->item.value < content.value) {
-        searchBinary(&(*t)->rigthSon, aux, content);
-        return;
-    }
-
-    *aux = *t;
-}
-
 int isInBinaryTree(BinaryTree *t, Data content) {
     if (t == NULL) {
         return 0;
     }
 
-    return t->item.value == content.value || isInBinaryTree(t->leftSon, content) || isInBinaryTree(t->rigthSon, content);
+    return t -> item.value == content.value || isInBinaryTree(t->leftSon, content) || isInBinaryTree(t -> rigthSon, content);
 }
 
 void antecessorBinary(BinaryTree **t, BinaryTree *aux)
@@ -66,38 +47,41 @@ void antecessorBinary(BinaryTree **t, BinaryTree *aux)
     free(aux);
 }
 
-void removeBinary(BinaryTree **t, Data content) {
+void removeBinary(BinaryTree **t, Data content, int &btRemoveCont) {
     BinaryTree *aux;
 
     if (*t == NULL) {
-        printf("[ERROR]: Data not found!!!\n");
+        // printf("[ERROR]: Data not found!!!\n");
+        btRemoveCont++;
         return;
     }
 
     if (content.value < (*t)->item.value) {
-        removeBinary(&(*t)->leftSon, content);
+        removeBinary(&(*t)->leftSon, content, btRemoveCont);
         return;
     }
 
     if (content.value > (*t)->item.value) {
-        removeBinary(&(*t)->rigthSon, content);
+        removeBinary(&(*t)->rigthSon, content, btRemoveCont);
         return;
     }
 
-    if ((*t)->rigthSon == NULL) {
+    cout << "\t\t\t\t\tValue found and will be removed: " << content.value << endl;
+
+    if ((*t) -> rigthSon == NULL) {
         aux = *t;
-        *t = (*t)->leftSon;
+        *t = (*t) -> leftSon;
         free(aux);
         return;
     }
 
-    if ((*t)->leftSon != NULL) {
+    if ((*t) -> leftSon != NULL) {
         antecessorBinary(&(*t)->leftSon, *t);
         return;
     }
 
     aux = *t;
-    *t = (*t)->rigthSon;
+    *t = (*t) -> rigthSon;
     free(aux);
 }
 
@@ -183,6 +167,25 @@ float  read500000numbersBinary(BinaryTree **t) {
         }
     }
     
+    time = clock() - time;
+    return (float(time)/CLOCKS_PER_SEC);
+}
+
+float searchRemoveFromBinary(BinaryTree **t, int &btRemoveCont) {
+    size_t time = clock();
+    Data aux;
+    string line;
+    ifstream myfile;
+    myfile.open("search.txt");
+
+    while(!myfile.eof()) {
+        getline(myfile, line);
+        if (line[0] != '\n') {
+            aux.value = stof(line);
+            removeBinary(t, aux, btRemoveCont);
+        }
+    }
+
     time = clock() - time;
     return (float(time)/CLOCKS_PER_SEC);
 }
