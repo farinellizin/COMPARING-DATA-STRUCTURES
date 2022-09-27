@@ -51,7 +51,6 @@ void removeBinary(BinaryTree **t, Data content, int &btRemoveCont) {
     BinaryTree *aux;
 
     if (*t == NULL) {
-        // printf("[ERROR]: Data not found!!!\n");
         btRemoveCont++;
         return;
     }
@@ -86,90 +85,12 @@ void removeBinary(BinaryTree **t, Data content, int &btRemoveCont) {
 }
 
 void posordem(BinaryTree *t) {
-    // int cont = 0;
     if (!(t == NULL)) {
         posordem(t -> leftSon);
         posordem(t -> rigthSon);
-        // printf("%d ", t -> item.value);
         cout << t -> item.value << endl;
     }
 }
-
-// float read500numbersBinary(BinaryTree **t) {
-//     size_t time = clock();
-//     Data aux;
-//     string line;
-//     ifstream myfile;
-//     myfile.open("500numbers.txt");
-
-//     while (!myfile.eof()) {
-//         getline(myfile, line);
-//         if (line[0] != '\n') {
-//             aux.value = stof(line);
-//             insertBinary(t, aux);
-//         }
-//     }
-
-//     time = clock() - time;
-//     return (float(time)/CLOCKS_PER_SEC);
-// }
-
-// float read5000numbersBinary(BinaryTree **t) {
-//     size_t time = clock();
-//     Data aux;
-//     string line;
-//     ifstream myfile;
-//     myfile.open("5000numbers.txt");
-
-//     while (!myfile.eof()) {
-//         getline(myfile, line);
-//         if (line[0] != '\n') {
-//             aux.value = stof(line);
-//             insertBinary(t, aux);
-//         }
-//     }
-
-//     time = clock() - time;
-//     return (float(time)/CLOCKS_PER_SEC);
-// }
-
-// float read50000numbersBinary(BinaryTree **t) {
-//     size_t time = clock();
-//     Data aux;
-//     string line;
-//     ifstream myfile;
-//     myfile.open("50000numbers.txt");
-
-//     while (!myfile.eof()) {
-//         getline(myfile, line);
-//         if (line[0] != '\n') {
-//             aux.value = stof(line);
-//             insertBinary(t, aux);
-//         }
-//     }
-
-//     time = clock() - time;
-//     return (float(time)/CLOCKS_PER_SEC);
-// }
-
-// float  read500000numbersBinary(BinaryTree **t) {
-//     size_t time = clock();
-//     Data aux;
-//     string line;
-//     ifstream myfile;
-//     myfile.open("500000numbers.txt");
-
-//     while (!myfile.eof()) {
-//         getline(myfile, line);
-//         if (line[0] != '\n') {
-//             aux.value = stof(line);
-//             insertBinary(t, aux);
-//         }
-//     }
-    
-//     time = clock() - time;
-//     return (float(time)/CLOCKS_PER_SEC);
-// }
 
 float readNumbersBinary(BinaryTree **t, string docName) {
     size_t time = clock();

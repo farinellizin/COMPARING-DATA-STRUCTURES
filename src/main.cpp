@@ -1,11 +1,12 @@
 #include "includes.hpp"
 #include "binaryTreeProcessing.hpp"
+#include "vectorProcessing.hpp"
 using namespace std;
 
 int main () {
     
-	runBinaryTree();
-
+	// runBinaryTree();
+	runVector();
 
 	
 	// float avlt500, avlt5000, avlt50000, avlt500000; // data avlTree
