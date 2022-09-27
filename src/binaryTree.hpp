@@ -26,10 +26,12 @@ void removeBinary(BinaryTree **t, Data content, int &btRemoveCont);
 void antecessorBinary(BinaryTree **t, BinaryTree *aux);
 // void widthPathBinary(BinaryTree *t);
 
-float read500numbersBinary(BinaryTree **t);
-float read5000numbersBinary(BinaryTree **t);
-float read50000numbersBinary(BinaryTree **t);
-float read500000numbersBinary(BinaryTree **t);
+// float read500numbersBinary(BinaryTree **t);
+// float read5000numbersBinary(BinaryTree **t);
+// float read50000numbersBinary(BinaryTree **t);
+// float read500000numbersBinary(BinaryTree **t);
 float searchRemoveFromBinary(BinaryTree **t, int &btRemoveCont);
+float readNumbersBinary(BinaryTree **t, string docName);
+
 
 #endif
