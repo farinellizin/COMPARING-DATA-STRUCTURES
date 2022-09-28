@@ -4,7 +4,9 @@
 using namespace std;
 
 void quickSort(vector <float> &vectorToOrder, int begin, int end);
+int vectorBinarySearch(vector <float> &vectorToSearch, float value);
 bool isInVector(vector <float> &vectorToOrder, float value);
-void readNumbersVector(vector <float> &vectorToSave, string docName);
+float readNumbersVector(vector <float> &vectorToSave, string docName);
+float searchRemoveFromVector(vector <float> &vectorToRemove, int &vecRemoveCont);
 
 #endif
