@@ -1,12 +1,16 @@
 #include "includes.hpp"
 #include "binaryTreeProcessing.hpp"
 #include "vectorProcessing.hpp"
+#include "mapProcessing.hpp"
+#include "unorderedMapProcessing.hpp"
 using namespace std;
 
 int main () {
     
 	// runBinaryTree();
-	runVector();
+	// runVector();
+	// runMap();
+	runUnorderedMap();
 
 	
 	// float avlt500, avlt5000, avlt50000, avlt500000; // data avlTree
