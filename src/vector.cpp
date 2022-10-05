@@ -1,32 +1,47 @@
 #include "vector.hpp"
 
-void quickSort(vector <float> &vectorToOrder, int begin, int end)
-{
-	int i = begin, j = end - 1, pivot = vectorToOrder[(begin + end) / 2], aux;
+// void teste(vector <float> &vectorzin) {
+// 	float aux;
 
-	while(i <= j)
-	{
-		while(vectorToOrder[i] < pivot && i < end)
-		{
-			i++;
-		}
-		while(vectorToOrder[j] > pivot && j > begin)
-		{
-			j--;
-		}
-		if(i <= j)
-		{
-			aux = vectorToOrder[i];
-			vectorToOrder[i] = vectorToOrder[j];
-			vectorToOrder[j] = aux;
-			i++;
-			j--;
-		}
-	}
-	if(j > begin)
-		quickSort(vectorToOrder, begin, j+1);
-	if(i < end)
-		quickSort(vectorToOrder, i, end);
+// 	for (long unsigned int i = 0; i < vectorzin.size(); i++) {
+//         for (long unsigned int j = i + 1; j < vectorzin.size(); j++) {
+//             if (vectorzin[i] > vectorzin[j]) {
+//                 aux = vectorzin[i];
+//                 vectorzin[i] = vectorzin[j];
+//                 vectorzin[j] = aux;
+//             }
+//         }
+//     }
+
+// 	// cout << endl << endl << endl << aux << endl << endl << endl;
+// }
+
+void swap(float* a, float* b) {
+    float t = *a;
+    *a = *b;
+    *b = t;
+}
+
+int partition(vector <float> &vectorToOrder, int low, int high) {
+    float pivot = vectorToOrder[high];
+    int i = (low - 1); 
+  
+    for (int j = low; j <= high - 1; j++) {
+        if (vectorToOrder[j] < pivot) {
+            i++;
+            swap(&vectorToOrder[i], &vectorToOrder[j]);
+        }
+    }
+    swap(&vectorToOrder[i + 1], &vectorToOrder[high]);
+    return (i + 1);
+}
+
+void quickSort(vector <float> &vectorToOrder, int low, int high) {
+	if (low < high) {
+        int pi = partition(vectorToOrder, low, high);
+        quickSort(vectorToOrder, low, pi - 1);
+        quickSort(vectorToOrder, pi + 1, high);
+    }
 }
 
 int vectorBinarySearch(vector <float> &vectorToSearch, float value) {
@@ -107,3 +122,35 @@ float searchRemoveFromVector(vector <float> &vectorToRemove, int &vecRemoveCont)
 	time = clock() - time;
 	return (float(time)/CLOCKS_PER_SEC);
 }
+
+// void quickSort(vector <float> &vectorToOrder, int begin, int end)
+// {
+// 	int i = begin, j = end - 1, pivot = vectorToOrder[(begin + end) / 2], aux;
+
+// 	while(i <= j)
+// 	{
+// 		while(vectorToOrder[i] < pivot && i < end)
+// 		{
+// 			i++;
+// 		}
+// 		while(vectorToOrder[j] > pivot && j > begin)
+// 		{
+// 			j--;
+// 		}
+// 		if(i <= j)
+// 		{
+// 			aux = vectorToOrder[i];
+// 			vectorToOrder[i] = vectorToOrder[j];
+// 			vectorToOrder[j] = aux;
+// 			i++;
+// 			j--;
+// 		}
+// 	}
+// 	if (j > begin) {
+// 		quickSort(vectorToOrder, begin, j+1);
+// 	}
+
+// 	if (i < end) {
+// 		quickSort(vectorToOrder, i, end);
+// 	}
+// }

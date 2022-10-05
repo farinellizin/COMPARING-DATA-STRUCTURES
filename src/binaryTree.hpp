@@ -18,7 +18,6 @@ struct BinaryTree {
 void initBinaryTree(BinaryTree **t);
 bool isBinaryTreeEmpty(BinaryTree **t);
 void insertBinary(BinaryTree **t, Data content);
-int isInBinaryTree(BinaryTree *t, Data content);
 void removeBinary(BinaryTree **t, Data content, int &btRemoveCont);
 void antecessorBinary(BinaryTree **t, BinaryTree *aux);
 float searchRemoveFromBinary(BinaryTree **t, int &btRemoveCont);

@@ -9,7 +9,7 @@ bool isBinaryTreeEmpty(BinaryTree **t) {
 }
 
 void insertBinary(BinaryTree **t, Data content) {
-    if (isBinaryTreeEmpty(t))
+    if (*t == NULL)
     {
         *t = new BinaryTree;
         (*t)->leftSon = NULL;
@@ -24,14 +24,6 @@ void insertBinary(BinaryTree **t, Data content) {
             insertBinary(&(*t)->rigthSon, content);
         }
     }
-}
-
-int isInBinaryTree(BinaryTree *t, Data content) {
-    if (t == NULL) {
-        return 0;
-    }
-
-    return t -> item.value == content.value || isInBinaryTree(t->leftSon, content) || isInBinaryTree(t -> rigthSon, content);
 }
 
 void antecessorBinary(BinaryTree **t, BinaryTree *aux)
