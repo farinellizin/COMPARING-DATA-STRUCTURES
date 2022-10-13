@@ -1,21 +1,5 @@
 #include "vector.hpp"
 
-// void teste(vector <float> &vectorzin) {
-// 	float aux;
-
-// 	for (long unsigned int i = 0; i < vectorzin.size(); i++) {
-//         for (long unsigned int j = i + 1; j < vectorzin.size(); j++) {
-//             if (vectorzin[i] > vectorzin[j]) {
-//                 aux = vectorzin[i];
-//                 vectorzin[i] = vectorzin[j];
-//                 vectorzin[j] = aux;
-//             }
-//         }
-//     }
-
-// 	// cout << endl << endl << endl << aux << endl << endl << endl;
-// }
-
 void swap(float* a, float* b) {
     float t = *a;
     *a = *b;
@@ -46,13 +30,9 @@ void quickSort(vector <float> &vectorToOrder, int low, int high) {
 
 int vectorBinarySearch(vector <float> &vectorToSearch, float value) {
     int lowerBoundary = 0, upperBoundary = (vectorToSearch.size() - 1), middleBoundary = 0;
-	// cout << "size: " << upperBoundary << endl << endl;
 
     while (lowerBoundary <= upperBoundary) {
         middleBoundary = ((lowerBoundary + upperBoundary) / 2);
-		// cout<< "entered" << endl;
-
-		// cout << "valor atual: " << vectorToSearch[middleBoundary] << "\t valor buscado: " << value << endl;
 
         if (vectorToSearch[middleBoundary] == value) {
             return middleBoundary;
@@ -80,7 +60,6 @@ bool isInVector(vector <float> &vectorToSearch, float value) {
 
 float readNumbersVector(vector <float> &vectorToSave, string docName) {
     size_t time = clock();
-	// int cont = 0;
     ifstream myfile;
     string line;
     myfile.open(docName);
@@ -89,8 +68,6 @@ float readNumbersVector(vector <float> &vectorToSave, string docName) {
         getline(myfile, line);
         if (line[0] != '\n' && !isInVector(vectorToSave, stof(line))) {
             vectorToSave.push_back(stof(line));
-			// cout << cont << endl;
-			// cont++;
         }
     }
 
@@ -110,9 +87,8 @@ float searchRemoveFromVector(vector <float> &vectorToRemove, int &vecRemoveCont)
 		getline(myfile, line);
 		if (line[0] != '\n') {
 			pos = vectorBinarySearch(vectorToRemove, stof(line));
-			// cout << pos << endl;	
 			if (pos != -1) {
-				cout << "\t\t\t\t\tValue found and will be removed: " << line << endl;
+				// cout << "\t\t\t\t\tValue found and will be removed: " << line << endl;
 				vectorToRemove.erase(vectorToRemove.begin() + pos);
 				vecRemoveCont++;
 			}
@@ -122,35 +98,3 @@ float searchRemoveFromVector(vector <float> &vectorToRemove, int &vecRemoveCont)
 	time = clock() - time;
 	return (float(time)/CLOCKS_PER_SEC);
 }
-
-// void quickSort(vector <float> &vectorToOrder, int begin, int end)
-// {
-// 	int i = begin, j = end - 1, pivot = vectorToOrder[(begin + end) / 2], aux;
-
-// 	while(i <= j)
-// 	{
-// 		while(vectorToOrder[i] < pivot && i < end)
-// 		{
-// 			i++;
-// 		}
-// 		while(vectorToOrder[j] > pivot && j > begin)
-// 		{
-// 			j--;
-// 		}
-// 		if(i <= j)
-// 		{
-// 			aux = vectorToOrder[i];
-// 			vectorToOrder[i] = vectorToOrder[j];
-// 			vectorToOrder[j] = aux;
-// 			i++;
-// 			j--;
-// 		}
-// 	}
-// 	if (j > begin) {
-// 		quickSort(vectorToOrder, begin, j+1);
-// 	}
-
-// 	if (i < end) {
-// 		quickSort(vectorToOrder, i, end);
-// 	}
-// }

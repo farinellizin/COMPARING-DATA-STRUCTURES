@@ -17,13 +17,9 @@ void runBinaryTree() {
 	bt50000 = readNumbersBinary(&binaryTree50000, "50000numbers.txt");
 	bt500000 = readNumbersBinary(&binaryTree500000, "500000numbers.txt");
 
-    cout << "\n\t\t\t\t ~ Searching and Removing from 500 values Binary Tree: " << endl << endl;
 	btRemove500 = searchRemoveFromBinary(&binaryTree500, btRemoveCont500);
-	cout << "\n\t\t\t\t ~ Searching and Removing from 5000 values Binary Tree: " << endl << endl;
 	btRemove5000 = searchRemoveFromBinary(&binaryTree5000, btRemoveCont5000);
-	cout << "\n\t\t\t\t ~ Searching and Removing from 50000 values Binary Tree: " << endl << endl;
 	btRemove50000 = searchRemoveFromBinary(&binaryTree50000, btRemoveCont50000);
-	cout << "\n\t\t\t\t ~ Searching and Removing from 500000 values Binary Tree: " << endl << endl;
 	btRemove500000 = searchRemoveFromBinary(&binaryTree500000, btRemoveCont500000);
 	cout << endl << endl;
 

@@ -1,6 +1,6 @@
-#include "unorderedMap.hpp"
+#include "map.hpp"
 
-float readNumbersUnorderedMap(unordered_map <string, float> &mapToFill, string docName) {
+float readNumbersMap(map <string, float> &mapToFill, string docName) {
     size_t time = clock();
     string line;
     ifstream myfile;
@@ -18,7 +18,7 @@ float readNumbersUnorderedMap(unordered_map <string, float> &mapToFill, string d
     return (float(time)/CLOCKS_PER_SEC);
 }
 
-float searchRemoveFromUnorderedMap(unordered_map <string, float> &mapToRemove, int &mRemoveCont) {
+float searchRemoveFromMap(map <string, float> &mapToRemove, int &mRemoveCont) {
     size_t time = clock();
     string line;
     ifstream myfile;
@@ -29,7 +29,7 @@ float searchRemoveFromUnorderedMap(unordered_map <string, float> &mapToRemove, i
         if (line[0] != '\n') {
             auto search = mapToRemove.find(line);
             if (search != mapToRemove.end()) {
-                cout << "\t\t\t\t\tValue found and will be removed: " << line << endl;
+                // cout << "\t\t\t\t\tValue found and will be removed: " << line << endl;
                 mapToRemove.erase(line);
                 mRemoveCont++;
             }

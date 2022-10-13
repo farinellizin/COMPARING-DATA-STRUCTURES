@@ -57,7 +57,7 @@ void removeBinary(BinaryTree **t, Data content, int &btRemoveCont) {
         return;
     }
 
-    cout << "\t\t\t\t\tValue found and will be removed: " << content.value << endl;
+    // cout << "\t\t\t\t\tValue found and will be removed: " << content.value << endl;
 
     if ((*t) -> rigthSon == NULL) {
         aux = *t;

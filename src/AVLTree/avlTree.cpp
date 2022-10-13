@@ -6,38 +6,38 @@ AVLTree* initAVLTree(){
 
 void insertAVL(AVLTree **t, AVLData content){
 
-  if(*t == NULL){
-	*t = new AVLTree;
-	(*t)->leftSon = NULL; 
-	(*t)->rightSon = NULL; 
-	(*t)->weight = 0;
-	(*t)->item = content; 
-
-  } else {
+	if(*t == NULL){
+		*t = new AVLTree;
+		(*t)->leftSon = NULL; 
+		(*t)->rightSon = NULL; 
+		(*t)->weight = 0;
+		(*t)->item = content; 
+	} else {
 	
 	if(content.value < (*t)->item.value){
-	  insertAVL(&(*t)->leftSon, content);
-	  if ((getWeightAVL(&(*t)->leftSon) - getWeightAVL(&(*t)->rightSon)) == 2){
-	  	if(content.value < (*t)->leftSon->item.value)
-	  		simpleRightRotation(t);
-	  	else
-	  		doubleRightRotation(t);
-	  }
+		insertAVL(&(*t)->leftSon, content);
+		if ((getWeightAVL(&(*t)->leftSon) - getWeightAVL(&(*t)->rightSon)) == 2){
+			if(content.value < (*t)->leftSon->item.value) {
+				simpleRightRotation(t);
+			} else {
+				doubleRightRotation(t);
+			}
+		}
 	}
 	
-	if(content.value > (*t)->item.value){
-	  insertAVL(&(*t)->rightSon, content);
-	  if ((getWeightAVL(&(*t)->rightSon) - getWeightAVL(&(*t)->leftSon)) == 2){
-	  	if(content.value > (*t)->rightSon->item.value)
-	  		simpleLeftRotation(t);
-	  	else
-	  		doubleLeftRotation(t);
-	  }
+		if(content.value > (*t)->item.value){
+		insertAVL(&(*t)->rightSon, content);
+		if ((getWeightAVL(&(*t)->rightSon) - getWeightAVL(&(*t)->leftSon)) == 2){
+			if(content.value > (*t)->rightSon->item.value)
+				simpleLeftRotation(t);
+			else
+				doubleLeftRotation(t);
+		}
+		}
+	
 	}
-  
-  }
 
-  (*t)->weight = getMaxWeightAVL(getWeightAVL(&(*t)->leftSon), getWeightAVL(&(*t)->rightSon)) + 1;
+  	(*t)->weight = getMaxWeightAVL(getWeightAVL(&(*t)->leftSon), getWeightAVL(&(*t)->rightSon)) + 1;
 }
 
 void antecessorAVL(AVLTree **t, AVLTree *aux){ 
@@ -104,7 +104,7 @@ void removeAVL(AVLTree **t, AVLTree **f, AVLData content, int &avlRemoveCont){
 		return;
 	}
 
-	cout << "\t\t\t\t\tValue found and will be removed: " << content.value << endl;
+	// cout << "\t\t\t\t\tValue found and will be removed: " << content.value << endl;
 
   	if ((*t)->rightSon == NULL) { 
   		aux = *t;  
@@ -217,4 +217,4 @@ float searchRemoveFromAVL(AVLTree **t, int &btRemoveCont) {
 
     time = clock() - time;
     return (float(time)/CLOCKS_PER_SEC);
-}
+}	

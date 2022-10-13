@@ -16,13 +16,9 @@ void runUnorderedMap() {
     um50000 = readNumbersUnorderedMap(umap50000, "50000numbers.txt");
     um500000 = readNumbersUnorderedMap(umap500000, "500000numbers.txt");
 
-    cout << "\n\t\t\t\t ~ Searching and Removing from 500 values Map ~" << endl << endl;
 	umRemove500 = searchRemoveFromUnorderedMap(umap500, umRemoveCont500);
-	cout << "\n\t\t\t\t ~ Searching and Removing from 5000 values Map ~" << endl << endl;
 	umRemove5000 = searchRemoveFromUnorderedMap(umap5000, umRemoveCont5000);
-	cout << "\n\t\t\t\t ~ Searching and Removing from 50000 values Map ~" << endl << endl;
 	umRemove50000 = searchRemoveFromUnorderedMap(umap50000, umRemoveCont50000);
-	cout << "\n\t\t\t\t ~ Searching and Removing from 500000 values Map ~" << endl << endl;
 	umRemove500000 = searchRemoveFromUnorderedMap(umap500000, umRemoveCont500000);
 	cout << endl << endl;
 

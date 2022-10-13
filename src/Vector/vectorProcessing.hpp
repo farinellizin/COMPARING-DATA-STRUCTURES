@@ -37,13 +37,9 @@ void runVector() {
     time = clock() - time;
     ordVec500000 = (float(time)/CLOCKS_PER_SEC);
 
-    cout << "\n\t\t\t\t ~ Searching and Removing from 500 values Vector: " << endl << endl;
     vecRemove500 = searchRemoveFromVector(vector500, vecRemoveCont500);
-    cout << "\n\t\t\t\t ~ Searching and Removing from 500 values Vector: " << endl << endl;
     vecRemove5000 = searchRemoveFromVector(vector5000, vecRemoveCont5000);
-    cout << "\n\t\t\t\t ~ Searching and Removing from 500 values Vector: " << endl << endl;
     vecRemove50000 = searchRemoveFromVector(vector50000, vecRemoveCont50000);
-    cout << "\n\t\t\t\t ~ Searching and Removing from 500 values Vector: " << endl << endl;
     vecRemove500000 = searchRemoveFromVector(vector500000, vecRemoveCont500000);
 
     printVector(vec500, ordVec500, vecRemove500, vecRemoveCont500, vec5000, ordVec5000, vecRemove5000, vecRemoveCont5000,

@@ -1,16 +1,17 @@
-#include "binaryTreeProcessing.hpp"
-#include "vectorProcessing.hpp"
-#include "mapProcessing.hpp"
-#include "unorderedMapProcessing.hpp"
-#include "avlTreeProcessing.hpp"
+#include "BinaryTree/binaryTreeProcessing.hpp"
+#include "Vector/vectorProcessing.hpp"
+#include "Map/mapProcessing.hpp"
+#include "UnorderedMap/unorderedMapProcessing.hpp"
+#include "AVLTree/avlTreeProcessing.hpp"
+#include "RedBlackTree/redBlackTreeProcessing.hpp"
 #include "includes.hpp"
 using namespace std;
 
 int main () {
-    
+	// runVector();
 	// runBinaryTree();
-	// runVector();				// problems
 	// runMap();
 	// runUnorderedMap();
-	// runAVLTree();				// problems: 58.4640	??
+	// runAVLTree();
+	runRedBlackTree();
 }
