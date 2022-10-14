@@ -1,5 +1,6 @@
 #include "avlTree.hpp"
 #include "includes.hpp"
+#include "printData.hpp"
 using namespace std;
 
 void runAVLTree() {

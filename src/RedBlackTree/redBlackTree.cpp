@@ -120,7 +120,6 @@ void simpleLeftRotation(RedBlackTree **raiz, RedBlackTree *child){
     x->dad = y;
 }
 
-
 void simpleRightRotation(RedBlackTree **raiz, RedBlackTree *child){
     RedBlackTree *x, *y;
 
@@ -169,6 +168,192 @@ float readNumbersRedBlack(RedBlackTree **t, string docName) {
     time = clock() - time;
     return (float(time)/CLOCKS_PER_SEC);
 }
+
+float searchRemoveFromRedBlack(RedBlackTree **t, int &btRemoveCont) {
+    size_t time = clock();
+    RedBlackData aux;
+    string line;
+    ifstream myfile;
+    myfile.open("search.txt");
+
+    while(!myfile.eof()) {
+        getline(myfile, line);
+        if (line[0] != '\n') {
+            aux.value = stof(line);
+            removeRB(t, t, aux, btRemoveCont);
+        }
+    }
+
+    time = clock() - time;
+    return (float(time)/CLOCKS_PER_SEC);
+}
+
+void deleteRB(RedBlackTree **T, RedBlackTree *valor){
+    RedBlackTree *y=valor;
+    RedBlackTree *x;
+    bool originalColor=y->color;
+    if (valor->leftSon==NULL){
+        x=valor->rightSon;
+        if (x==NULL){
+            x=new RedBlackTree;
+            x->item.value=404;
+            x->color=true;
+            valor->rightSon=x;
+        }
+
+        RBTransplant(T,valor,valor->rightSon);
+        x->dad=valor->dad;
+    } else if(valor->rightSon==NULL){
+        x=valor->leftSon;
+        if (x==NULL){
+            x=new RedBlackTree;
+            x->item.value=404;
+            x->color=true;
+            valor->leftSon=x;
+        }
+        
+        RBTransplant(T,valor,valor->leftSon);
+        x->dad=valor->dad;
+    } else{
+        y=TreeMinimun(&valor->leftSon);
+        originalColor=y->color;
+        x=y->leftSon;
+        if (x==NULL){
+            x=new RedBlackTree;
+            x->dad=y;
+            x->item.value=404;
+            x->color=true;
+            y->leftSon=x;
+        }
+        if (y->dad==valor){
+            x->dad=y;
+        } else {
+            RBTransplant(T,y,y->leftSon);
+            y->leftSon=valor->leftSon;
+            y->leftSon->dad=y;
+        }
+
+        RBTransplant(T,valor,y);
+        y->rightSon=valor->rightSon;
+        y->rightSon->dad=y;
+        y->color=valor->color;
+    }
+
+    RedBlackTree *aux=x;
+    if (originalColor)
+        RBDeleteFixup(T,x);
+    if (aux->item.value==404){
+        if (aux==aux->dad->leftSon)
+        aux->dad->leftSon=NULL;
+        else
+        aux->dad->rightSon=NULL;
+        delete aux;
+    }
+
+    delete valor;
+}
+
+void RBTransplant(RedBlackTree **T, RedBlackTree *valor, RedBlackTree *sucessor){
+    if (valor->dad==NULL)
+        (*T)=sucessor;
+    else if(valor==valor->dad->leftSon)
+        valor->dad->leftSon=sucessor;
+    else
+        valor->dad->rightSon=sucessor;
+    sucessor->dad=valor->dad;
+}
+
+void removeRB(RedBlackTree **raiz, RedBlackTree **t, RedBlackData r, int &rbRemoveCont){
+    if (*t == NULL){ 
+        return;
+    }
+
+    if (r.value < (*t)->item.value){ removeRB(raiz, &(*t)->leftSon, r, rbRemoveCont); return; }
+    if (r.value > (*t)->item.value){ removeRB(raiz, &(*t)->rightSon, r, rbRemoveCont); return; }
+
+    if ((*raiz)->rightSon==NULL && (*raiz)->leftSon==NULL){delete (*raiz);(*raiz)=NULL;return;}
+
+    rbRemoveCont++;
+    deleteRB(raiz,(*t));  
+}
+
+RedBlackTree *TreeMinimun(RedBlackTree **t){
+    if ((*t)->rightSon != NULL){
+        return TreeMinimun(&(*t)->rightSon);
+    } else{
+        return (*t);
+    }
+    
+    return NULL;
+} 
+
+void RBDeleteFixup(RedBlackTree **T, RedBlackTree *x){
+    while (x!=(*T)&&x->color){
+        if (x==x->dad->leftSon){
+            RedBlackTree* w=x->dad->rightSon;
+        if (w!=NULL){
+            if (!w->color){
+                w->color=true;
+                x->dad->color=false;
+                simpleLeftRotation(T,x->dad);
+                w=x->dad->rightSon;
+            }
+            
+            if ((w->rightSon==NULL||w->rightSon->color)&&(w->leftSon==NULL||w->leftSon->color)){
+                w->color=false;
+                x=x->dad;
+            } else if(w->rightSon==NULL||w->rightSon->color){
+                w->leftSon->color=true;
+                w->color=false;
+                simpleRightRotation(T,w);
+                w=x->dad->rightSon;
+            }
+            
+            if(w->rightSon!=NULL&&!w->rightSon->color){
+                w->color=x->dad->color;
+                x->dad->color=true;
+                w->rightSon->color=true;
+                simpleLeftRotation(T,x->dad);
+                x=(*T);
+            }
+        } else
+            x=x->dad;
+        } else{
+            RedBlackTree* w=x->dad->leftSon;
+            if (w!=NULL){
+                if (!w->color){
+                    w->color=true;
+                    x->dad->color=false;
+                    simpleRightRotation(T,x->dad);
+                    w=x->dad->leftSon;
+                }
+                if ((w->rightSon==NULL||w->rightSon->color)&&(w->leftSon==NULL||w->leftSon->color)){
+                    if(w != NULL)
+                        w->color=false;
+                    x=x->dad;
+                } else if(w->leftSon==NULL||w->leftSon->color){
+                    w->rightSon->color=true;
+                    w->color=false;
+                    simpleLeftRotation(T,w);
+                    w=x->dad->leftSon;
+                }
+                if(w->leftSon!=NULL&&!w->leftSon->color){
+                    w->color=x->dad->color;
+                    x->dad->color=true;
+                    w->leftSon->color=true;
+                    simpleRightRotation(T,x->dad);
+                    x=(*T);
+                }
+            }
+        else
+            x=x->dad;
+        }
+    }
+    x->color=true;  
+}
+
+
+
 
 // apagar depois
 void preordem(RedBlackTree *t){

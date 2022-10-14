@@ -8,10 +8,10 @@
 using namespace std;
 
 int main () {
-	// runVector();
-	// runBinaryTree();
-	// runMap();
-	// runUnorderedMap();
-	// runAVLTree();
+	runVector();
+	runBinaryTree();
+	runMap();
+	runUnorderedMap();
+	runAVLTree();
 	runRedBlackTree();
 }

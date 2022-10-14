@@ -1,5 +1,6 @@
 #include "map.hpp"
 #include "includes.hpp"
+#include "printData.hpp"
 using namespace std;
 
 void runMap() {
