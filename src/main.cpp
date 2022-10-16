@@ -8,10 +8,16 @@
 using namespace std;
 
 int main () {
-	runVector();
-	runBinaryTree();
-	runMap();
-	runUnorderedMap();
-	runAVLTree();
-	runRedBlackTree();
+	for (int i = 0; i < 10; i++) {
+		cout << "\t\t\tEXECUÇÃO " << i + 1 << endl << endl;
+		
+		runVector();
+		runBinaryTree();
+		runMap();
+		runUnorderedMap();
+		runAVLTree();
+		runRedBlackTree();
+	
+		cout << endl << endl << endl;
+	}
 }
