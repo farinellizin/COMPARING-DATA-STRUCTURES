@@ -34,22 +34,22 @@
 
 <table align = "center">
     <tr>  
-        <td> Árvore Binária de Pesquisa</td>
+        <td align = "center"> Árvore Binária de Pesquisa</td>
     </tr>
     <tr>  
-        <td> Árvore AVL</td>
+        <td align = "center"> Árvore AVL</td>
     </tr>
     <tr>  
-        <td> Árvore RedBlack</td>
+        <td align = "center"> Árvore RedBlack</td>
     </tr>
     <tr>  
-        <td> std::vector</td>
+        <td align = "center"> std::vector</td>
     </tr>
     <tr>  
-        <td> std::map</td>
+        <td align = "center"> std::map</td>
     </tr>
     <tr>  
-        <td> std::unordered_map</td>
+        <td align = "center"> std::unordered_map</td>
     </tr>
 </table>
 
@@ -61,31 +61,31 @@
 
 <table align = "center">
     <tr>  
-        <td> iostream </td>
+        <td align = "center"> iostream </td>
     </tr>
     <tr>  
-        <td> iomanip </td>
+        <td align = "center"> iomanip </td>
     </tr>
     <tr>  
-        <td> string </td>
+        <td align = "center"> string </td>
     </tr>
     <tr>  
-        <td> fstream </td>
+        <td align = "center"> fstream </td>
     </tr>
     <tr>  
-        <td> unordered_map </td>
+        <td align = "center"> unordered_map </td>
     </tr>
     <tr>  
-        <td> map </td>
+        <td align = "center"> map </td>
     </tr>
     <tr>  
-        <td> vector </td>
+        <td align = "center"> vector </td>
     </tr>
     <tr>  
-        <td> time.h </td>
+        <td align = "center"> time.h </td>
     </tr>
     <tr>  
-        <td> unistd.h </td>
+        <td align = "center"> unistd.h </td>
     </tr>
 </table>
 
@@ -159,20 +159,20 @@ Como o principal âmbito desse projeto é o tempo de processamento, é de extrem
 
 <table align="center">
     <tr>
-        <td>Melhor caso</td>
-        <td>O(1)</td>
+        <td align = "center">Melhor caso</td>
+        <td align = "center">O(1)</td>
     </tr>
     <tr>
-        <td>Caso médio</td>
-        <td>O(n)</td>
+        <td align = "center">Caso médio</td>
+        <td align = "center">O(n)</td>
     </tr>
     <tr>
-        <td>Pior caso</td>
-        <td> \[\O(frac{n+1}{2})\] </td>
+        <td align = "center">Pior caso</td>
+        <td align = "center"> \[\O(frac{n+1}{2})\] </td>
     </tr>
     <tr>
-        <td>Busca sem sucesso</td>
-        <td> O(n + 1) </td>
+        <td align = "center">Busca sem sucesso</td>
+        <td align = "center"> O(n + 1) </td>
     </tr>
 </table>
 
@@ -238,56 +238,56 @@ Basicamente, o que deve ser entendido é que dentro do arquivo **main.cpp**, exi
 #### Estruturas
 <table align="center">
     <tr>
-        <td>vector<strong>X</strong></td>
-        <td>Variável para x valores sendo armazenados na estrutura std::vector</td>
+        <td align = "center">vector<strong>X</strong></td>
+        <td align = "center">Variável para x valores sendo armazenados na estrutura std::vector</td>
     </tr>
     <tr>
-        <td>binaryTree<strong>X</strong></td>
-        <td>Variável para x valores sendo armazenados na estrutura Árvore Binária</td>
+        <td align = "center">binaryTree<strong>X</strong></td>
+        <td align = "center">Variável para x valores sendo armazenados na estrutura Árvore Binária</td>
     </tr>
     <tr>
-        <td>map<strong>X</strong></td>
-        <td>Variável para x valores sendo armazenados na estrutura std::map</td>
+        <td align = "center">map<strong>X</strong></td>
+        <td align = "center">Variável para x valores sendo armazenados na estrutura std::map</td>
     </tr>
     <tr>
-        <td>umap<strong>X</strong></td>
-        <td>Variável para x valores sendo armazenados na estrutura std::unordered_map</td>
+        <td align = "center">umap<strong>X</strong></td>
+        <td align = "center">Variável para x valores sendo armazenados na estrutura std::unordered_map</td>
     </tr>
     <tr>
-        <td>AVLTree<strong>X</strong></td>
-        <td>Variável para x valores sendo armazenados na estrutura Árvore AVL</td>
+        <td align = "center">AVLTree<strong>X</strong></td>
+        <td align = "center">Variável para x valores sendo armazenados na estrutura Árvore AVL</td>
     </tr>
     <tr>
-        <td>RedBlackTree<strong>X</strong></td>
-        <td>Variável para x valores sendo armazenados na estrutura Árvore RedBlack</td>
+        <td align = "center">RedBlackTree<strong>X</strong></td>
+        <td align = "center">Variável para x valores sendo armazenados na estrutura Árvore RedBlack</td>
     </tr>
 </table>
 
 #### Inserção
 <table align="center">
     <tr>
-        <td>vec<strong>X</strong></td>
-        <td>Dados referentes ao tempo de inserção da estrutura std::vector</td>
+        <td align = "center">vec<strong>X</strong></td>
+        <td align = "center">Dados referentes ao tempo de inserção da estrutura std::vector</td>
     </tr>
     <tr>
-        <td>bt<strong>X</strong></td>
-        <td>Dados referentes ao tempo de inserção da estrutura Árvore Binária</td>
+        <td align = "center">bt<strong>X</strong></td>
+        <td align = "center">Dados referentes ao tempo de inserção da estrutura Árvore Binária</td>
     </tr>
     <tr>
-        <td>m<strong>X</strong></td>
-        <td>Dados referentes ao tempo de inserção da estrutura std::map</td>
+        <td align = "center">m<strong>X</strong></td>
+        <td align = "center">Dados referentes ao tempo de inserção da estrutura std::map</td>
     </tr>
     <tr>
-        <td>um<strong>X</strong></td>
-        <td>Dados referentes ao tempo de inserção da estrutura std::unordered_map</td>
+        <td align = "center">um<strong>X</strong></td>
+        <td align = "center">Dados referentes ao tempo de inserção da estrutura std::unordered_map</td>
     </tr>
     <tr>
-        <td>avl<strong>X</strong></td>
-        <td>Dados referentes ao tempo de inserção da estrutura Árvore AVL</td>
+        <td align = "center">avl<strong>X</strong></td>
+        <td align = "center">Dados referentes ao tempo de inserção da estrutura Árvore AVL</td>
     </tr>
     <tr>
-        <td>rb<strong>X</strong></td>
-        <td>Dados referentes ao tempo de inserção da estrutura Árvore RedBlack</td>
+        <td align = "center">rb<strong>X</strong></td>
+        <td align = "center">Dados referentes ao tempo de inserção da estrutura Árvore RedBlack</td>
     </tr>
 </table>
 
@@ -295,28 +295,28 @@ Basicamente, o que deve ser entendido é que dentro do arquivo **main.cpp**, exi
 
 <table align="center">
     <tr>
-        <td>vecRemove<strong>X</strong></td>
-        <td>Dados referentes ao tempo de remoção da estrutura std::vector</td>
+        <td align = "center">vecRemove<strong>X</strong></td>
+        <td align = "center">Dados referentes ao tempo de remoção da estrutura std::vector</td>
     </tr>
     <tr>
-        <td>btRemove<strong>X</strong></td>
-        <td>Dados referentes ao tempo de remoção da estrutura Árvore Binária</td>
+        <td align = "center">btRemove<strong>X</strong></td>
+        <td align = "center">Dados referentes ao tempo de remoção da estrutura Árvore Binária</td>
     </tr>
     <tr>
-        <td>mRemove<strong>X</strong></td>
-        <td>Dados referentes ao tempo de remoção da estrutura std::map</td>
+        <td align = "center">mRemove<strong>X</strong></td>
+        <td align = "center">Dados referentes ao tempo de remoção da estrutura std::map</td>
     </tr>
     <tr>
-        <td>umRemove<strong>X</strong></td>
-        <td>Dados referentes ao tempo de remoção da estrutura std::unordered_map</td>
+        <td align = "center">umRemove<strong>X</strong></td>
+        <td align = "center">Dados referentes ao tempo de remoção da estrutura std::unordered_map</td>
     </tr>
     <tr>
-        <td>avlRemove<strong>X</strong></td>
-        <td>Dados referentes ao tempo de remoção da estrutura Árvore AVL</td>
+        <td align = "center">avlRemove<strong>X</strong></td>
+        <td align = "center">Dados referentes ao tempo de remoção da estrutura Árvore AVL</td>
     </tr>
     <tr>
-        <td>rbRemove<strong>X</strong></td>
-        <td>Dados referentes ao tempo de remoção da estrutura Árvore RedBlack</td>
+        <td align = "center">rbRemove<strong>X</strong></td>
+        <td align = "center">Dados referentes ao tempo de remoção da estrutura Árvore RedBlack</td>
     </tr>
 </table>
 
@@ -324,28 +324,28 @@ Ademais, não foi solicitado, mas ainda assim é interessante pontuar, as variá
 
 <table align="center">
     <tr>
-        <td>vecRemoveCont<strong>X</strong></td>
-        <td>Dados referentes a quantidade de remoções na estrutura std::vector</td>
+        <td align = "center">vecRemoveCont<strong>X</strong></td>
+        <td align = "center">Dados referentes a quantidade de remoções na estrutura std::vector</td>
     </tr>
     <tr>
-        <td>btRemoveCont<strong>X</strong></td>
-        <td>Dados referentes a quantidade de remoções na estrutura Árvore Binária</td>
+        <td align = "center">btRemoveCont<strong>X</strong></td>
+        <td align = "center">Dados referentes a quantidade de remoções na estrutura Árvore Binária</td>
     </tr>
     <tr>
-        <td>mRemoveCont<strong>X</strong></td>
-        <td>Dados referentes a quantidade de remoções na estrutura std::map</td>
+        <td align = "center">mRemoveCont<strong>X</strong></td>
+        <td align = "center">Dados referentes a quantidade de remoções na estrutura std::map</td>
     </tr>
     <tr>
-        <td>umRemoveCont<strong>X</strong></td>
-        <td>Dados referentes a quantidade de remoções na estrutura std::unordered_map</td>
+        <td align = "center">umRemoveCont<strong>X</strong></td>
+        <td align = "center">Dados referentes a quantidade de remoções na estrutura std::unordered_map</td>
     </tr>
     <tr>
-        <td>avlRemoveCont<strong>X</strong></td>
-        <td>Dados referentes a quantidade de remoções na estrutura Árvore AVL</td>
+        <td align = "center">avlRemoveCont<strong>X</strong></td>
+        <td align = "center">Dados referentes a quantidade de remoções na estrutura Árvore AVL</td>
     </tr>
     <tr>
-        <td>rbRemoveCont<strong>X</strong></td>
-        <td>Dados referentes a quantidade de remoções na estrutura Árvore RedBlack</td>
+        <td align = "center">rbRemoveCont<strong>X</strong></td>
+        <td align = "center">Dados referentes a quantidade de remoções na estrutura Árvore RedBlack</td>
     </tr>
 </table>
 
