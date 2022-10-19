@@ -462,7 +462,7 @@ Por diversas vezes, é possível visualizar colunas vazias. A explicação para 
 
 ##### Inserção e Remoção - 500 valores
 <p align="center">
-    <img src="imgs/500.png" width="230px"/> 
+    <img src="imgs/500.png" width="800px"/> 
 </p>
 
 <table align = "center">
@@ -506,7 +506,7 @@ Por diversas vezes, é possível visualizar colunas vazias. A explicação para 
 ##### Inserção e Remoção - 5000 valores
 
 <p align="center">
-    <img src="imgs/5000.png" width="230px"/> 
+    <img src="imgs/5000.png" width="800px"/> 
 </p>
 
 <table align = "center">
@@ -550,7 +550,7 @@ Por diversas vezes, é possível visualizar colunas vazias. A explicação para 
 ##### Inserção e Remoção - 50000 valores
 
 <p align="center">
-    <img src="imgs/50000.png" width="230px"/> 
+    <img src="imgs/50000.png" width="800px"/> 
 </p>
 
 <table align = "center">
@@ -594,7 +594,7 @@ Por diversas vezes, é possível visualizar colunas vazias. A explicação para 
 ##### Inserção e Remoção - 500000 valores
 
 <p align="center">
-    <img src="imgs/500000.png" width="230px"/> 
+    <img src="imgs/500000.png" width="800px"/> 
 </p>
 
 <table align = "center">
@@ -636,7 +636,7 @@ Por diversas vezes, é possível visualizar colunas vazias. A explicação para 
 </table>
 
 <p align="center">
-    <img src="imgs/vector.png" width="230px"/> 
+    <img src="imgs/vector.png" width="800px"/> 
 </p>
 
 <table align = "center">
