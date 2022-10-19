@@ -29,7 +29,6 @@ float searchRemoveFromUnorderedMap(unordered_map <string, float> &mapToRemove, i
         if (line[0] != '\n') {
             auto search = mapToRemove.find(line);
             if (search != mapToRemove.end()) {
-                // cout << "\t\t\t\t\tValue found and will be removed: " << line << endl;
                 mapToRemove.erase(line);
                 mRemoveCont++;
             }

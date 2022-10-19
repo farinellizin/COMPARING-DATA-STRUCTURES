@@ -351,15 +351,3 @@ void RBDeleteFixup(RedBlackTree **T, RedBlackTree *x){
     }
     x->color=true;  
 }
-
-
-
-
-// apagar depois
-void preordem(RedBlackTree *t){
-  if(!(t == NULL)){
-    printf("%f - %s\n", t->item.value, t->color ? "black" : "red");
-    preordem(t->leftSon); 
-    preordem(t->rightSon); 
-  }
-}

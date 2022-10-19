@@ -88,7 +88,6 @@ float searchRemoveFromVector(vector <float> &vectorToRemove, int &vecRemoveCont)
 		if (line[0] != '\n') {
 			pos = vectorBinarySearch(vectorToRemove, stof(line));
 			if (pos != -1) {
-				// cout << "\t\t\t\t\tValue found and will be removed: " << line << endl;
 				vectorToRemove.erase(vectorToRemove.begin() + pos);
 				vecRemoveCont++;
 			}

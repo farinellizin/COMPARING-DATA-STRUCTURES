@@ -137,7 +137,6 @@ void preordem(AVLTree *t)
 	}
 }
 
-
 int getWeightAVL(AVLTree **t){
 	if(*t == NULL)
 		return -1;
