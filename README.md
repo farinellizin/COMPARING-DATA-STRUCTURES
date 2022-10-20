@@ -168,7 +168,7 @@ Como o principal âmbito desse projeto é o tempo de processamento, é de extrem
     </tr>
     <tr>
         <td align = "center">Pior caso</td>
-        <td align = "center"> \[\O(frac{n+1}{2})\] </td>
+        <td align = "center"> O((n + 1) / 2) </td>
     </tr>
     <tr>
         <td align = "center">Busca sem sucesso</td>
