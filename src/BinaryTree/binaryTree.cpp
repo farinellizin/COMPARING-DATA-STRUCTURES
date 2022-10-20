@@ -26,6 +26,43 @@ void insertBinary(BinaryTree **t, Data content) {
     }
 }
 
+void search(BinaryTree **t, BinaryTree **aux, Data content) {
+    if (*t == NULL) {
+        return;
+    }
+
+    if ((*t) -> item.value > content.value) {
+        search(&(*t) ->leftSon, aux, content);
+    }
+
+    if ((*t) -> item.value < content.value) {
+        search(&(*t) -> rigthSon, aux, content);
+    }
+
+    *aux = *t;
+}
+
+float searchInBinary(BinaryTree **t) {
+    size_t time = clock();
+    Data auxD;
+    string line;
+    ifstream myfile;
+    myfile.open("search.txt");
+    BinaryTree *aux; 
+    initBinaryTree(&aux);
+
+    while (!myfile.eof()) {
+        getline(myfile, line);
+        if (line[0] != '\n') {
+            auxD.value = stof(line);
+            search(t, &aux, auxD);
+        }
+    }
+
+    time = clock() - time;
+    return (float(time)/CLOCKS_PER_SEC);
+}
+
 void antecessorBinary(BinaryTree **t, BinaryTree *aux)
 {
     if ((*t)->rigthSon != NULL) {

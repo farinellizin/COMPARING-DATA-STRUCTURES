@@ -29,5 +29,7 @@ void doubleRightRotation(AVLTree **t);
 void doubleLeftRotation(AVLTree **t);
 float searchRemoveFromAVL(AVLTree **t, int &btRemoveCont);
 float readNumbersAVL(AVLTree **t, string docName);
+void search(AVLTree **t, AVLTree**aux, AVLData content);
+float searchInAVL(AVLTree **t);
 
 #endif

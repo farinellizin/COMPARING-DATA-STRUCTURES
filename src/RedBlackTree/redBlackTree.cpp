@@ -351,3 +351,39 @@ void RBDeleteFixup(RedBlackTree **T, RedBlackTree *x){
     }
     x->color=true;  
 }
+
+void search(RedBlackTree **t, RedBlackTree **aux, RedBlackData content) {
+    if (*t == NULL) {
+        return;
+    }
+
+    if ((*t) -> item.value > content.value) {
+        search(&(*t) ->leftSon, aux, content);
+    }
+
+    if ((*t) -> item.value < content.value) {
+        search(&(*t) -> rightSon, aux, content);
+    }
+
+    *aux = *t;
+}
+
+float searchInRedBlack(RedBlackTree **t) {
+    size_t time = clock();
+    RedBlackData auxD;
+    string line;
+    ifstream myfile;
+    myfile.open("search.txt");
+    RedBlackTree *aux = initRedBlack();
+
+    while (!myfile.eof()) {
+        getline(myfile, line);
+        if (line[0] != '\n') {
+            auxD.value = stof(line);
+            search(t, &aux, auxD);
+        }
+    }
+
+    time = clock() - time;
+    return (float(time)/CLOCKS_PER_SEC);
+}

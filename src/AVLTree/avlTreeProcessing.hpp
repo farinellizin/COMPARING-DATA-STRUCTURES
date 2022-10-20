@@ -8,11 +8,17 @@ void runAVLTree() {
 
     float avl500 = 0, avl5000 = 0, avl50000 = 0, avl500000 = 0, avlRemove500 = 0, avlRemove5000 = 0, avlRemove50000 = 0, avlRemove500000 = 0; // data AVLTree
 	int avlRemoveCont500 = 0, avlRemoveCont5000 = 0, avlRemoveCont50000 = 0, avlRemoveCont500000 = 0;
+	float avlSearch500, avlSearch5000, avlSearch50000, avlSearch500000;
 
     avl500 = readNumbersAVL(&AVLTree500, "500numbers.txt");
 	avl5000 = readNumbersAVL(&AVLTree5000, "5000numbers.txt");
 	avl50000 = readNumbersAVL(&AVLTree50000, "50000numbers.txt");
 	avl500000 = readNumbersAVL(&AVLTree500000, "500000numbers.txt");
+
+	avlSearch500 = searchInAVL(&AVLTree500);
+	avlSearch5000 = searchInAVL(&AVLTree5000) ;
+	avlSearch50000 = searchInAVL(&AVLTree50000) ;
+	avlSearch500000 = searchInAVL(&AVLTree500000);
 
 	avlRemove500 = searchRemoveFromAVL(&AVLTree500, avlRemoveCont500);
 	avlRemove5000 = searchRemoveFromAVL(&AVLTree5000, avlRemoveCont5000);
@@ -21,5 +27,5 @@ void runAVLTree() {
 	cout << endl << endl;
 
 	printAVLTree(avl500, avlRemove500, avlRemoveCont500, avl5000, avlRemove5000, avlRemoveCont5000, avl50000, avlRemove50000, 
-	avlRemoveCont50000, avl500000, avlRemove500000, avlRemoveCont500000);
+	avlRemoveCont50000, avl500000, avlRemove500000, avlRemoveCont500000, avlSearch500, avlSearch5000, avlSearch50000, avlSearch500000);
 }

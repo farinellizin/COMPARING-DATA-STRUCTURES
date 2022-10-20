@@ -216,4 +216,40 @@ float searchRemoveFromAVL(AVLTree **t, int &btRemoveCont) {
 
     time = clock() - time;
     return (float(time)/CLOCKS_PER_SEC);
-}	
+}
+
+void search(AVLTree **t, AVLTree**aux, AVLData content) {
+    if (*t == NULL) {
+        return;
+    }
+
+    if ((*t) -> item.value > content.value) {
+        search(&(*t) ->leftSon, aux, content);
+    }
+
+    if ((*t) -> item.value < content.value) {
+        search(&(*t) -> rightSon, aux, content);
+    }
+
+    *aux = *t;
+}
+
+float searchInAVL(AVLTree **t) {
+    size_t time = clock();
+    AVLData auxD;
+    string line;
+    ifstream myfile;
+    myfile.open("search.txt");
+    AVLTree *aux = initAVLTree(); 
+
+    while (!myfile.eof()) {
+        getline(myfile, line);
+        if (line[0] != '\n') {
+            auxD.value = stof(line);
+            search(t, &aux, auxD);
+        }
+    }
+
+    time = clock() - time;
+    return (float(time)/CLOCKS_PER_SEC);
+}

@@ -58,6 +58,23 @@ bool isInVector(vector <float> &vectorToSearch, float value) {
     return false;
 }
 
+float searchInVector(vector <float> &vectorToSearch) {
+    size_t time = clock();
+    ifstream myfile;
+    string line;
+    myfile.open("search.txt");
+
+    while (!myfile.eof()) {
+        getline(myfile, line);
+        if (line[0] != '\n') {
+            vectorBinarySearch(vectorToSearch, stof(line));
+        }
+    }
+
+    time = clock() - time;
+    return (float(time)/CLOCKS_PER_SEC);
+}
+
 float readNumbersVector(vector <float> &vectorToSave, string docName) {
     size_t time = clock();
     ifstream myfile;

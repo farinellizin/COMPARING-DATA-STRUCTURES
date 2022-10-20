@@ -18,6 +18,24 @@ float readNumbersMap(map <string, float> &mapToFill, string docName) {
     return (float(time)/CLOCKS_PER_SEC);
 }
 
+float searchInMap(map <string, float> &mapToSearch) {
+    size_t time = clock();
+    string line;
+    ifstream myfile;
+
+    myfile.open("search.txt");
+    while (!myfile.eof()) {
+        getline(myfile, line);
+
+        if (line[0] != '\n') {
+            mapToSearch.find(line);
+        }
+    }
+
+    time = clock() - time;
+    return (float(time)/CLOCKS_PER_SEC);
+}
+
 float searchRemoveFromMap(map <string, float> &mapToRemove, int &mRemoveCont) {
     size_t time = clock();
     string line;

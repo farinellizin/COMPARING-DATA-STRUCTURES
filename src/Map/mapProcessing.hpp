@@ -11,11 +11,17 @@ void runMap() {
 
     float m500, m5000, m50000, m500000, mRemove500, mRemove5000, mRemove50000, mRemove500000;
     int mRemoveCont500 = 0, mRemoveCont5000 = 0, mRemoveCont50000 = 0, mRemoveCont500000 = 0;
+    float mSearch500, mSearch5000, mSearch50000, mSearch500000;
     
     m500 = readNumbersMap(map500, "500numbers.txt");
     m5000 = readNumbersMap(map5000, "5000numbers.txt");
     m50000 = readNumbersMap(map50000, "50000numbers.txt");
     m500000 = readNumbersMap(map500000, "500000numbers.txt");
+
+    mSearch500 = searchInMap(map500);
+    mSearch5000 = searchInMap(map5000);
+    mSearch50000 = searchInMap(map50000);
+    mSearch500000 = searchInMap(map500000);
 
 	mRemove500 = searchRemoveFromMap(map500, mRemoveCont500);
 	mRemove5000 = searchRemoveFromMap(map5000, mRemoveCont5000);
@@ -24,5 +30,6 @@ void runMap() {
 	cout << endl << endl;
 
     printMap(m500, mRemove500, mRemoveCont500, m5000, mRemove5000, mRemoveCont5000,
- m50000, mRemove50000, mRemoveCont50000, m500000, mRemove500000, mRemoveCont500000);
+ m50000, mRemove50000, mRemoveCont50000, m500000, mRemove500000, mRemoveCont500000,
+ mSearch500, mSearch5000, mSearch50000, mSearch500000);
 } 

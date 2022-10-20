@@ -22,6 +22,8 @@ void removeBinary(BinaryTree **t, Data content, int &btRemoveCont);
 void antecessorBinary(BinaryTree **t, BinaryTree *aux);
 float searchRemoveFromBinary(BinaryTree **t, int &btRemoveCont);
 float readNumbersBinary(BinaryTree **t, string docName);
+void search(BinaryTree **t, BinaryTree **aux, Data content);
+float searchInBinary(BinaryTree **t);
 
 
 #endif

@@ -291,7 +291,36 @@ Basicamente, o que deve ser entendido é que dentro do arquivo **main.cpp**, exi
     </tr>
 </table>
 
-### Pesquisa e Remoção
+### Pesquisa 
+
+<table align="center">
+    <tr>
+        <td align = "center">vecSearch<strong>X</strong></td>
+        <td align = "center">Dados referentes ao tempo de pesquisa da estrutura std::vector</td>
+    </tr>
+    <tr>
+        <td align = "center">btSearch<strong>X</strong></td>
+        <td align = "center">Dados referentes ao tempo de pesquisa da estrutura Árvore Binária</td>
+    </tr>
+    <tr>
+        <td align = "center">mSearch<strong>X</strong></td>
+        <td align = "center">Dados referentes ao tempo de pesquisa da estrutura std::map</td>
+    </tr>
+    <tr>
+        <td align = "center">umSearch<strong>X</strong></td>
+        <td align = "center">Dados referentes ao tempo de pesquisa da estrutura std::unordered_map</td>
+    </tr>
+    <tr>
+        <td align = "center">avlSearch<strong>X</strong></td>
+        <td align = "center">Dados referentes ao tempo de pesquisa da estrutura Árvore AVL</td>
+    </tr>
+    <tr>
+        <td align = "center">rbSearch<strong>X</strong></td>
+        <td align = "center">Dados referentes ao tempo de pesquisa da estrutura Árvore RedBlack</td>
+    </tr>
+</table>
+
+### Remoção
 
 <table align="center">
     <tr>
@@ -378,7 +407,27 @@ No momento em que o looping é finalizado, é computado o tempo final da execuç
 
     if readingAux[0] != '\n' and !isInVector(structure, readingAux):
 
-Após o processo anterior, todos os valores estão devidamente inseridos em suas respectivas estruturas, além do tempo também ter sido computado. O próximo passo é realizar as remoções. Para tal, foi criada a função **searchRemoveFrom**NomeDaEstrutura(), cujo propósito gira em torno de realizar a leitura do arquivo de busca, procurá-los na estrutura em questão e removê-lo, além de contar o número de remoções realizadas. Ela recebe dois parâmetros, primeiramente, o endereço de memória da variável que representa a estrutura da qual os dados serão removidos e, em seguida, o endereço de memória de uma variável que será incrementada à todo momento que uma remoção ocorrer.
+Após o processo anterior, todos os valores estão devidamente inseridos em suas respectivas estruturas, além do tempo também ter sido computado. O próximo passo é realizar as pesquisas. Para tal, foi criada a função **searchIn**NomeDaEstrutura(), cujo propósito gira em torno de realizar a leitura do arquivo de busca e procurá-los na estrutura. Ela recebe um parâmetro, sendo ele o endereço de memória das estrutura em que as pesquisas serão realizadas, tendo um funcionamento extremamente simples.
+
+Entrando na função, é iniciada uma variável do tipo **size_t**, a fim de marcar a qual tempo é iniciado o processo de pesquisa. Na sequência, é feita a leitura do arquivo da forma padrão do **C++**, seguindo a ideia de um valor por linha, e, devido a esse fator, é usada a função **getline()**. Na sequÇencia, é realizado um teste e, caso a primeira posição da string coletada seja diferente de **\n**, implica que não é uma linha vazia, podendo ser um valor real a ser pesquisado na estrutura.
+
+A de fato busca é realizada por funções built-in, nos casos de estruturas padrão das linguagens, **std::maps** e **std::vector**. Já para as estruturas criadas, foi criada uma função que funciona da mesma forma para os três tipo de árvores. Como, novamente, o propósito da apresentação não é esse, essa implementação não será mostrada na documentação. A implementação da função para pesquisar e coletar o tempo de pesquisa pode ser vista abaixo.
+
+    input: structure → Structure to search
+    output: finalTime - initialTime
+
+    initialTime = timeNow()
+    open_file(search.txt)
+
+    while not in the end of the file:
+        readingAux = getline
+
+        if readingAux[0] != '\n':
+            structure.search(stof(readingAux))
+
+    finalTime = timeNow()
+
+O próximo passo é realizar as remoções. Para tal, foi criada a função **searchRemoveFrom**NomeDaEstrutura(), cujo propósito gira em torno de realizar a leitura do arquivo de busca, procurá-los na estrutura em questão e removê-lo, além de contar o número de remoções realizadas. Ela recebe dois parâmetros, primeiramente, o endereço de memória da variável que representa a estrutura da qual os dados serão removidos e, em seguida, o endereço de memória de uma variável que será incrementada à todo momento que uma remoção ocorrer.
 
 Ao entrar na função, é iniciada uma variável do tipo **size_t**, a fim de marcar a qual tempo é iniciado o processo de remoção. Na sequência, é feita a leitura do arquivo da forma padrão do **C++**, seguindo a ideia de um valor por linha, e, devido a esse fator, é usada a função **getline()**. Na sequência, é realizado um teste, e, caso a primeira posição da string coletada seja diferente de **\n**, implica que não é uma linha vazia, podendo ser um valor real a ser pesquisado na estrutura.
 
@@ -460,7 +509,7 @@ Desde o início da documentação, foi frisado por diversas vezes do principal f
 
 Por diversas vezes, é possível visualizar colunas vazias. A explicação para isso é o fato que diferenças abundantes nos valores causam uma distorção no gráfico afetando, portanto, a experiência visual.
 
-##### Inserção e Remoção - 500 valores
+##### Inserção, Pesquisa e Remoção - 500 valores
 <p align="center">
     <img src="imgs/500.png" width="800px"/> 
 </p>
@@ -469,41 +518,50 @@ Por diversas vezes, é possível visualizar colunas vazias. A explicação para 
     <tr>
         <td align = "center"> <strong> Estrutura </strong> </td>
         <td align = "center"> <strong> Tempo de inserção </strong> </td>
+        <td align = "center"> <strong> Tempo de pesquisa</strong></td>
         <td align = "center"> <strong> Tempo de remoção </strong> </td>
     </tr>
     <tr>
         <td align = "center">Vector</td>
-        <td align = "center">0.0018</td>
-        <td align = "center">0.0031</td>
+        <td align = "center">0.0012</td>
+        <td align = "center">0.0024</td>
+        <td align = "center">0.0024</td>
     </tr>
     <tr>
         <td align = "center">Árvore Binária</td>
         <td align = "center">0.0001</td>
+        <td align = "center">0.0024</td>
         <td align = "center">0.0022</td>
     </tr>
     <tr>
         <td align = "center">Árvore AVL</td>
         <td align = "center">0.0003</td>
         <td align = "center">0.0022</td>
+        <td align = "center">0.0022</td>
     </tr>
     <tr>
         <td align = "center">Árvore RedBlack</td>
         <td align = "center">0.0007</td>
+        <td align = "center">0.0022</td>
         <td align = "center">0.0021</td>
     </tr>
     <tr>
         <td align = "center">Map</td>
         <td align = "center">0.0007</td>
+        <td align = "center">0.0025</td>
         <td align = "center">0.0038</td>
     </tr>
     <tr>
         <td align = "center">Unordered_map</td>
         <td align = "center">0.0084</td>
+        <td align = "center">0.0009</td>
         <td align = "center">0.0011</td>
     </tr>
 </table>
 
-##### Inserção e Remoção - 5000 valores
+Na faixa dos 500 valores, pode-se perceber com facilidade a superioridade da Árvore Binária para a questão. Isso se dá devido ao fato de poucos valores sendo inseridos, além de não possuir a situação que gera o pior caso da estrutura. A mesma se difere das Árvores AVL e RedBlack pelo motivo de não realizar rotações que, mesmo que venham por bem, em certas situações é melhor manter a Árvore como está, como claramente foi possível perceber por meio dos tempos de inserção. Pode-se perceber também a igualidade nos tempos da RedBlack e do std::map, que pode ser visualizado devido ao custo de inserção dos containers ser de log(n), valor que a árvore supracitada está sempre buscando manter além da estrutura padrão da linguagem foi implementada pensando também na RedBlack. O vector se encontra em penúltimo, devido ao fato de realizar pesquisa linear a todo momento antes da inserção. O std::unordered_map está em último com uma grande desvantagem para todos os outros, muito provavelmente, está caindo nó pior caso da estrutura, com muitas colisões de valores, de forma que seu custo de inserção chege a O(n).
+
+##### Inserção, Pesquisa e Remoção - 5000 valores
 
 <p align="center">
     <img src="imgs/5000.png" width="800px"/> 
@@ -513,41 +571,48 @@ Por diversas vezes, é possível visualizar colunas vazias. A explicação para 
     <tr>
         <td align = "center"> <strong> Estrutura </strong> </td>
         <td align = "center"> <strong> Tempo de inserção </strong> </td>
+        <td align = "center"> <strong> Tempo de pesquisa</strong></td>
         <td align = "center"> <strong> Tempo de remoção </strong> </td>
     </tr>
     <tr>
         <td align = "center">Vector</td>
-        <td align = "center">0.0450 </td>
+        <td align = "center">0.0413 </td>
         <td align = "center">0.0028</td>
+        <td align = "center">0.0029</td>
     </tr>
     <tr>
         <td align = "center">Árvore Binária</td>
         <td align = "center">0.0013</td>
-        <td align = "center">0.0026</td>
+        <td align = "center">0.0028</td>
+        <td align = "center">0.0027</td>
     </tr>
     <tr>
         <td align = "center">Árvore AVL</td>
         <td align = "center">0.0021 </td>
+        <td align = "center"> 0.0030</td>
         <td align = "center">0.0029</td>
     </tr>
     <tr>
         <td align = "center">Árvore RedBlack</td>
         <td align = "center">0.0017 </td>
-        <td align = "center">0.0031</td>
+        <td align = "center">0.0032</td>
+        <td align = "center">0.0032</td>
     </tr>
     <tr>
         <td align = "center">Map</td>
         <td align = "center">0.0032 </td>
+        <td align = "center">0.0034</td>
         <td align = "center">0.0038</td>
     </tr>
     <tr>
         <td align = "center">Unordered_map</td>
         <td align = "center">0.0020</td>
+        <td align = "center">0.0011</td>
         <td align = "center">0.0014</td>
     </tr>
 </table>
 
-##### Inserção e Remoção - 50000 valores
+##### Inserção, Pesquisa e Remoção - 50000 valores
 
 <p align="center">
     <img src="imgs/50000.png" width="800px"/> 
@@ -557,41 +622,48 @@ Por diversas vezes, é possível visualizar colunas vazias. A explicação para 
     <tr>
         <td align = "center"> <strong> Estrutura </strong> </td>
         <td align = "center"> <strong> Tempo de inserção </strong> </td>
+        <td align = "center"> <strong> Tempo de pesquisa</strong></td>
         <td align = "center"> <strong> Tempo de remoção </strong> </td>
     </tr>
     <tr>
         <td align = "center">Vector</td>
         <td align = "center">2.6794</td>
-        <td align = "center">0.0076</td>
+        <td align = "center">0.0031</td>
+        <td align = "center">0.0077</td>
     </tr>
     <tr>
         <td align = "center">Árvore Binária</td>
         <td align = "center">0.0168</td>
+        <td align = "center">0.0040</td>
         <td align = "center">0.0038</td>
     </tr>
     <tr>
         <td align = "center">Árvore AVL</td>
         <td align = "center">0.0258</td>
+        <td align = "center">0.0039</td>
         <td align = "center">0.0041</td>
     </tr>
     <tr>
         <td align = "center">Árvore RedBlack</td>
         <td align = "center">0.0182</td>
+        <td align = "center">0.0046</td>
         <td align = "center">0.0047</td>
     </tr>
     <tr>
         <td align = "center">Map</td>
         <td align = "center">0.0396</td>
+        <td align = "center">0.0054</td>
         <td align = "center">0.0079</td>
     </tr>
     <tr>
         <td align = "center">Unordered_map</td>
         <td align = "center">0.0221</td>
+        <td align = "center">0.0022</td>
         <td align = "center">0.0030</td>
     </tr>
 </table>
 
-##### Inserção e Remoção - 500000 valores
+##### Inserção, Pesquisa e Remoção - 500000 valores
 
 <p align="center">
     <img src="imgs/500000.png" width="800px"/> 
@@ -601,36 +673,43 @@ Por diversas vezes, é possível visualizar colunas vazias. A explicação para 
     <tr>
         <td align = "center"> <strong> Estrutura </strong> </td>
         <td align = "center"> <strong> Tempo de inserção </strong> </td>
+        <td align = "center"> <strong> Tempo de pesquisa</strong></td>
         <td align = "center"> <strong> Tempo de remoção </strong> </td>
     </tr>
     <tr>
         <td align = "center">Vector</td>
         <td align = "center">61.0461</td>
+        <td align = "center"> 0.0032</td>
         <td align = "center">0.0275</td>
     </tr>
     <tr>
         <td align = "center">Árvore Binária</td>
         <td align = "center">0.1865</td>
         <td align = "center">0.0045</td>
+        <td align = "center">0.0047</td>
     </tr>
     <tr>
         <td align = "center">Árvore AVL</td>
         <td align = "center">0.2690 </td>
+        <td align = "center">0.0047</td>
         <td align = "center">0.0058</td>
     </tr>
     <tr>
         <td align = "center">Árvore RedBlack</td>
         <td align = "center">0.1737 </td>
+        <td align = "center">0.0047</td>
         <td align = "center">0.0057</td>
     </tr>
     <tr>
         <td align = "center">Map</td>
         <td align = "center">0.4367</td>
+        <td align = "center">0.0072</td>
         <td align = "center">0.0137</td>
     </tr>
     <tr>
         <td align = "center">Unordered_map</td>
         <td align = "center">0.2641</td>
+        <td align = "center">0.0033</td>
         <td align = "center">0.0055</td>
     </tr>
 </table>

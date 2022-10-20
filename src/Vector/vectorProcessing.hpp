@@ -11,6 +11,7 @@ void runVector() {
 
     float vec500, vec5000, vec50000, vec500000;
     float ordVec500, ordVec5000, ordVec50000, ordVec500000, vecRemove500, vecRemove5000, vecRemove50000, vecRemove500000;
+    float vecSearch500, vecSearch5000, vecSearch50000, vecSearch500000;
 	int vecRemoveCont500 = 0, vecRemoveCont5000 = 0, vecRemoveCont50000 = 0, vecRemoveCont500000 = 0;
 
     vec500 = readNumbersVector(vector500, "500numbers.txt");
@@ -38,11 +39,17 @@ void runVector() {
     time = clock() - time;
     ordVec500000 = (float(time)/CLOCKS_PER_SEC);
 
+    vecSearch500 = searchInVector(vector500);
+    vecSearch5000 = searchInVector(vector5000);
+    vecSearch50000 = searchInVector(vector50000);
+    vecSearch500000 = searchInVector(vector500000);
+
     vecRemove500 = searchRemoveFromVector(vector500, vecRemoveCont500);
     vecRemove5000 = searchRemoveFromVector(vector5000, vecRemoveCont5000);
     vecRemove50000 = searchRemoveFromVector(vector50000, vecRemoveCont50000);
     vecRemove500000 = searchRemoveFromVector(vector500000, vecRemoveCont500000);
 
     printVector(vec500, ordVec500, vecRemove500, vecRemoveCont500, vec5000, ordVec5000, vecRemove5000, vecRemoveCont5000,
-    vec50000, ordVec50000, vecRemove50000, vecRemoveCont50000, vec500000, ordVec500000, vecRemove500000, vecRemoveCont500000);
+    vec50000, ordVec50000, vecRemove50000, vecRemoveCont50000, vec500000, ordVec500000, vecRemove500000, vecRemoveCont500000,
+    vecSearch500, vecSearch5000, vecSearch50000, vecSearch500000);
 }
