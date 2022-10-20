@@ -226,10 +226,8 @@ Para maior detalhamento, o conteúdo referente ao **std::vector** pode ser encon
     </strong>
 </h2>
 
-# Arrumar LINKS!!!!
-
 <h5 align = "center">
-    De antemão, vale salientar que a lógica seguida para todas as estruturas de dados é praticamente idêntica e, por isso, será usado o modelo de pseudocódigo para representação, ao invés de detalhar o processo realizado uma a uma por meio do real código, a fim de evitar redundância. <br> Além disso, as funções necessárias para o devido funcionamento das extruturas não presentes nativamente na linguagem não serão aqui expostas, sendo possível encontrá-las por meio dos links abaixo: 
+    De antemão, vale salientar que a lógica seguida para todas as estruturas de dados é praticamente idêntica e, por isso, será usado o modelo de pseudocódigo para representação, ao invés de detalhar o processo realizado uma a uma por meio do real código, a fim de evitar redundância. <br> Além disso, as funções necessárias para o devido funcionamento das extruturas não presentes nativamente na linguagem não serão aqui expostas, sendo possível encontrá-las nos capítulos 12 (Árvores Binárias) e 13 (Árvores AVL e RedBlack), no livro <a href="https://www.amazon.com.br/Algoritmos-Teoria-Pr%C3%A1tica-Thomas-Cormen/dp/8535236996">Algoritmos - Teoria e Prática</a>.
 </h5>
 
 
@@ -559,7 +557,11 @@ Por diversas vezes, é possível visualizar colunas vazias. A explicação para 
     </tr>
 </table>
 
-Na faixa dos 500 valores, pode-se perceber com facilidade a superioridade da Árvore Binária para a questão. Isso se dá devido ao fato de poucos valores sendo inseridos, além de não possuir a situação que gera o pior caso da estrutura. A mesma se difere das Árvores AVL e RedBlack pelo motivo de não realizar rotações que, mesmo que venham por bem, em certas situações é melhor manter a Árvore como está, como claramente foi possível perceber por meio dos tempos de inserção. Pode-se perceber também a igualidade nos tempos da RedBlack e do std::map, que pode ser visualizado devido ao custo de inserção dos containers ser de log(n), valor que a árvore supracitada está sempre buscando manter além da estrutura padrão da linguagem foi implementada pensando também na RedBlack. O vector se encontra em penúltimo, devido ao fato de realizar pesquisa linear a todo momento antes da inserção. O std::unordered_map está em último com uma grande desvantagem para todos os outros, muito provavelmente, está caindo nó pior caso da estrutura, com muitas colisões de valores, de forma que seu custo de inserção chege a O(n).
+Na faixa dos 500 valores, pode-se perceber com facilidade a superioridade da Árvore Binária para a questão. Isso se dá devido ao fato de poucos valores sendo inseridos, além de não possuir a situação que gera o pior caso da estrutura. A mesma se difere das Árvores AVL e RedBlack pelo motivo de não realizar rotações que, mesmo que venham por bem, em certas situações é melhor manter a Árvore como está, como claramente foi possível perceber por meio dos tempos de inserção. Pode-se perceber também a igualidade nos tempos da RedBlack e do std::map, que pode ser visualizado devido ao custo de inserção dos containers ser de log(n), valor que a árvore supracitada está sempre buscando manter além da estrutura padrão da linguagem foi implementada pensando também na RedBlack. O vector se encontra em penúltimo, devido ao fato de realizar pesquisa linear a todo momento antes da inserção. O std::unordered_map está em último com uma grande desvantagem para todos os outros, muito provavelmente, está caindo nó pior caso da estrutura, com muitas colisões de valores, de forma que seu custo de inserção chegue a O(n), o tornando **600% pior** do que o segundo menor tempo.
+
+Por outro lado, ao analisar o tempo de pesquisa, pode-se perceber o inverso do que ocorreu na inserção: o pior se tornou o melhor. Além disso, ainda é plausível salientar que todos os tempos foram excelentemente aproximados, indicando um processo de busca efetivo e semelhante para todas as estruturas. Esse tempo se dá pois em todos eles é realizado formas de pesquisa que se assemelham - nas árvores, a ideia de divisão e conquista, tornando o tempo de pesquisa **log(n)**, no std::vector, a pesquisa binária, tornando também o tempo em **log(n)**, seguindo a mesma ideia citada acima, com o std::map seguindo a mesma ideia, sendo ele semelhante à Árvore RedBlack. Entretanto, o std::unordered_map se distoa drasticamente, e isso se dá pelo fato de ser uma Tabela Hash, que apresenta o custo de pesquisa voltado para **O(1)**, tornando essas buscas extremamente eficientes, sendo comprovadas pelo resultado, contando com uma diferença de **144.4%** para o segundo melhor tempo.
+
+Por fim, no tempo de remoção é mais uma vez possível visualizar uma grande diferença para o std::unordered_map, com um tempo excelente em relação aos outros. Mais uma vez, devido à semelhança em como ocorre a busca para posterior remoção, nas Árvores e no std::vector, o tempo foi muito semelhante, enquanto, por outro lado, o std::map apresentou um tempo muito acima do esperado, principalmente se comparar seu resultado com seu tempo de pesquisa, por motivos que, no momento, não se sabe ao certo. Tem-se que mais uma vez a Tabela Hash nativa do C++ teve um desempenho **90.9%** melhor que o segundo melhor, sendo ele o da RedBlack, enquanto o std::map desempenhou **58.3%** pior do que o segundo pior desempenho.
 
 ##### Inserção, Pesquisa e Remoção - 5000 valores
 
@@ -612,7 +614,19 @@ Na faixa dos 500 valores, pode-se perceber com facilidade a superioridade da Ár
     </tr>
 </table>
 
+Na faixa dos 5000 valores, já é possível observar um retrocesso do std::vector em relação às outras estruturas, obtendo um desempenho **3076,92%** pior em relação à melhor estrutura. Esse fator é explicado pela busca linear realizada antes de cada inserção, algo que não é feito em nenhuma das outras. Por outro lado, no quesito do melhor desempenho, pode-se observar a Árvore Binária, seguida da Árvore AVL e, posteriormente, a RedBlack. Um fato interessante é que as duas últimas árvores citadas anteriormente apresentam propostas semelhantes, mas mesmo, a Árvore Rubro-Negra ainda possui **23.5%** de vantagem. Isso se dá devido ao número de rotações que cada uma das árvores realiza: já que a AVL realiza rotações sempre que possuir 2 níveis de desbalanceamento, enquanto a RedBlack aceita até o dobro do tamanho da menor subárvore, é de se esperar que a primeira realize muito mais rotações, o que acarreta em um número maior de processos, fazendo com que a mesma fique computacionalmente mais cara. É possível perceber também uma melhora no std::unordered_map agora acompanhando as estruturas mais "sofisticadas", enquanto o std::map apresentou um declínio em seu desempenho, se distanciando de sua estrutura afim, RedBlack.
+
+Novamente, na pesquisa, pode-se perceber uma ampla diferença do tempo de pesquisa do std::unordered_map para as outras estruturas, sendo seu tempo de execução **154.5%** melhor do que a segunda melhor execução. Mais uma vez, vale salientar que isso se dá pelo seu tempo de pesquisa **O(1)**, enquanto todas as outras apresentam um custo de **log(n)** para realizar o mesmo proceso. Ainda há de pautar que o tempo de pesquisa no std::vector distoa de forma exorbitante do seu tempo de inserção, e isso se dá pois, na inserção, há uma busca linear (custo em O(n)), enquanto, na pesquisa, é utilizada a busca binária(custo em log(n)).
+
+Nas remoções, mais uma vez é possível visualizar o std::unordered_map se destacando, com **107.1%** de diferença para a segunda melhor, devido ao mesmo motivo supracitado, seu tempo de pesquisa. Ainda há de salientar que as Árvores RedBlack e AVL mais uma vez estão atrás da Binária, e isso é explicado pelo fato de que, em todas as remoções que as árvores que realizam balanceamento, é verificado se a estrutura ainda está balanceada e, caso não esteja, o mesmo é feito, custando mais processamento das estruturas, o que acarreta em um desempenho ligeiramente pior da estrutura que não o faz.
+
 ##### Inserção, Pesquisa e Remoção - 50000 valores
+
+Mais uma vez, nos 50000 valores, pode-se perceber o std::vector com valor absurdo na inserção, sendo completamente diferente de todos os outros, e isso se dá pelo mesmo motivo que já foi anteriormente citado, pesquisa linear. Pelo lado bom, mais uma vez é possível visualizar a Árvore Binária liderando o melhor tempo de inserção, com uma folga de **8.33%** em relação a segunda melhor, que por sua vez é a RedBlack. Tem ainda uma estrutura que se destoou mais uma vez, sendo ela o std::map, por motivos que não são conhecidos. A Árvore AVL também se distanciou de suas estruturas similares, e isso pode ser devido ao fato das diversas chamadas ao balanceamento, custando caro ao estruturá-la.
+
+Já no quesito pesquisa, o std::unordered_map se mostra mais uma vez extremamente efetivo, sendo outra vez a estrutura mais rápida. A pesquisa binária voltada ao std::vector também garantiu um bom tempo de execução, com o segundo melhor tempo. A diferença da pesquisa binária à ele implementado para as árvores, que deveriam, na teoria apresentar um tempo mais semelhante, haja visto que seus custos são o mesmo, pode se dar na forma em que a memória é manipulada, já que a manipulação do std::vector conta com diversas otimizações já que é uma função pronta da linguagem, enquanto as árvores foram estruturadas manualmente.
+
+Entretanto, o que foi dito acima não pode ser mantido, já que é visualizado que a segunda melhor estrutura de pesquisa caiu para a penúltima no âmbito da remoção. Isso pode ser devido à quantidade de iterações que pedem um redimensionamento da estrutura em questão, o std::vector. Já a Árvore Binária mostrou mais uma vez um ótimo desempenho, que, mesmo com um custo superior ao std::unordered_map (O(log(n)) x O(1)), ficou com apenas **26.6%** de desvantagem. Enquanto isso, as outras Árvores, AVL e Rubro-Negra apresentam tempo maior, mais uma vez, devido à sua necessidade de realizar novos balanceamentos após cada remoção. 
 
 <p align="center">
     <img src="imgs/50000.png" width="800px"/> 
@@ -665,6 +679,12 @@ Na faixa dos 500 valores, pode-se perceber com facilidade a superioridade da Ár
 
 ##### Inserção, Pesquisa e Remoção - 500000 valores
 
+Novamente, nos 500000 valores, vê-se o std::vector com valor absurdo na inserção, sendo impossível sequer colocar no gráfico a fim de continuar tornando possível visualizar os outros, e isso se dá pelo mesmo motivo que já foi anteriormente citado, pesquisa linear. Há também o comportamento do std::map, que tendencia cada vez mais a subir, haja visto que, a partir de um aumento de **90%**, teve seu tempo de execução elevado em valores que não condizem com a mesma proporcionalidade. Além disso, para essa quantidade de valores, a Árvore RedBlack se sobressaiu, e provavelmente obteve um número de rotações mais controlado, que fizeram com que ela se tornasse superior à Binária.
+
+Enquanto no quesito pesquisa, o std::vector no momento se tornou o mais eficaz, sendo o único a bater o std::unordered_map, mas com uma diferença minúscula de apenas **3.25%**, o que não torna possível definir o melhor, haja visto que vai depender das outras necessidades. Não seria escolhido, por exemplo, devido ao seu altíssimo tempo para inserção. As árvores AVL e RedBlack possuem também o mesmo tempo, portanto, pode ser observada uma possível equiparação de rotações.
+
+Na remoção, as mesmas árvores citadas anteriormente apresentaram também um tempo super semelhante ao do std::unordered_map, sendo a RedBlack melhor para esse tipo de situação, ao observar o escopo completo.
+
 <p align="center">
     <img src="imgs/500000.png" width="800px"/> 
 </p>
@@ -714,6 +734,8 @@ Na faixa dos 500 valores, pode-se perceber com facilidade a superioridade da Ár
     </tr>
 </table>
 
+##### Ordenação do std::vector
+
 <p align="center">
     <img src="imgs/vector.png" width="800px"/> 
 </p>
@@ -740,3 +762,103 @@ Na faixa dos 500 valores, pode-se perceber com facilidade a superioridade da Ár
         <td align = "center">0.0145 </td>
     </tr>
 </table>
+
+Na ordenção dos std::vector, pode-se perceber um crescimento exponencial de tempo, nos primeiros conjuntos de valores, haja visto que a proporção do primeiro para o segundo é de **500%** no quesito tempo, enquanto, do terceiro para o quarto, por exemplo, é de **850%**. Já a medida em que a quantidade de valores começa a se tornar maior, a proporção tende a diminuir, chegando por exemplo, do terceira para o quarto conjunto, a uma proporção de apenas **154.38%**. 
+
+<h2 align="center">
+    🚀 <strong>
+        <em>Funcionamento da aplicação</em>
+    </strong>
+</h2>
+
+O funcionamento da aplicação é de extrema simplicidade. A fim de tornar possível para o usuário obter todas as informações sem precisar de nenhuma interação, basta executar o programa e, ao fim da execução de todas as estruturas, as informações sobre cada uma das estruturas serão colocadas em sua tela, como pode ser visto no exemplo abaixo:
+
+        *************************************************************************************
+	    *                                                                                   *
+	    *        Here's all the data gathered in the processing of the RedBlack Tree        *
+	    *                                                                                   *
+	    *************************************************************************************
+	    *                                                                                   *
+	    *      RedBlack Tree - 500 values:                                                  *
+	    *                                                                                   *
+	    *            Store: 0.0003 seconds;                                                 *
+	    *            Searching: 0.0023 seconds;                                             *
+	    *            Removing: 0.0022 seconds.                                              *
+	    *            Number of removals: 00051                                              *
+	    *                                                                                   *
+	    *      RedBlack Tree - 5000 values:                                                 *
+	    *                                                                                   *
+	    *            Store: 0.0018 seconds;                                                 *
+	    *            Searching: 0.0032 seconds;                                             *
+	    *            Removing: 0.0030 seconds.                                              *
+	    *            Number of removals: 00544                                              *
+	    *                                                                                   *
+	    *      RedBlack Tree - 50000 values:                                                *
+	    *                                                                                   *
+	    *            Store: 0.0199 seconds;                                                 *
+	    *            Searching: 0.0042 seconds;                                             *
+	    *            Removing: 0.0041 seconds.                                              *
+	    *            Number of removals: 04055                                              *
+	    *                                                                                   *
+	    *      RedBlack Tree - 500000 values:                                               *
+	    *                                                                                   *
+	    *            Store: 0.1805 seconds;                                                 *
+	    *            Searching: 0.0038 seconds;                                             *
+	    *            Removing: 0.0048 seconds.                                              *
+	    *            Number of removals: 09268                                              *
+	    *                                                                                   *
+	    *************************************************************************************
+
+<h2 align="center">
+    🚩 <strong>
+        <em>Conclusões</em>
+    </strong>
+</h2>
+
+Em suma, pode-se perceber que diferentes estruturas se comportam de formas distintas a partir de diferentes entradas de dados. Vale citar que, a partir dos dados apresentados, a estrutura que apresentou o resultado mais satisfatório foi a Árvore Binária, devido ao seu **constante** bom desempenho. Entretanto, certas estruturas se sobressaíram em certas situações, o que convida a pensar em uma forma de unir vários pontos positivos a fim da estruturação de uma estrutura contando com os melhores aspectos. Por exemplo, o std::unordered_map se provou o mais eficaz para pesquisa e remoção, todavia, seu tempo de inserção deixou a desejar, o que não foi o caso da Árvore Binária, que apresentou **75%** de aproveitamento no quesito inserção, muito provavelmente pela forma que lida com a busca e não inserção de réplicas. Uma boa proposta seria efetuar as inserções diretamente na Árvore Binária, passando esses dados para um std::unordered_map, a fim de obter uma mais potente manipulação de dados. 
+
+Algo que ainda vale ser salientado é que, mesmo com a semelhança entre a Árvore Rubro-Negra e o std::map, a estrutura padrão do C++ não foi capaz de acompanhar sua equivalente, com a RedBlack tendo **91.16%** de aproveitamento sobre a mesma. Outra surpresa é que a pesquisa binária foi a única capaz de se sobressair em relação ao método de pesquisa usado no std::unordered_map, tornando o aproveitamento da Hash nativa para **75%** no quesito busca.
+
+Por serem estruturas nativas da linguagem e contarem com diversas otimizações, a dupla de mapas apresentou um resultado interessante:
+- Nos std::maps, não foi possível observar nenhum ganho nos métodos de pesquisa, algo que já era esperado, haja visto que sua estrutura se equipara à RedBlack, estima-se que seu tempo de busca seja de aproximadamente O(log(n)).
+- Nos std::unordered_map, foi possível visualizar uma brusca dominância no quesito pesquisa, o que, diferente de seu equivalente, já era esperado, tendo em mente que seu custo para pesquisa é de O(1). Entretanto, no último teste, ele foi destronado pela pesquisa binária, o que leva ao questionamento: o aproveitamento se manteria o mesmo caso a quantidade da valores continuasse crescendo? A busca binária ainda se saíria melhor caso isso acontecesse?
+
+Outro fator surpreendente foi em quanto um método externo à linguagem, a busca binária, foi capaz de tornar uma estrutura "robusta", como o std::vector, em algo potente para esse âmbito, estando sempre nas disputas para os melhores tempos.
+
+<h2 align="center">
+    🚩 <strong>
+        <em>Configurações dos testes</em>
+    </strong>
+</h2>
+
+<table align="center">
+    <tr>
+        <td align="center">Processador</td>
+        <td align="center">i7-6700K 4.00GHz×8 </td>
+    </tr>
+    <tr>
+        <td align="center">Memória</td>
+        <td align="center"> 2x8GB 3200MHz</td>
+    </tr>
+    <tr>
+        <td align="center">Sistema Operacional</td>
+        <td align="center">Linux Ubuntu 20.04.4 LTS</td>
+    </tr>
+</table>
+
+<h2 align="center">
+    🔧
+    <strong>
+        <em> 
+            Compilação e Execução
+        </em>    
+    </strong>
+</h2>
+
+| Comando                |  Função                                                                                           |                     
+| -----------------------| ------------------------------------------------------------------------------------------------- |
+|  `make clean`          | Apaga a última compilação realizada contida na pasta build                                        |
+|  `make`                | Executa a compilação do programa utilizando o g++, e o resultado vai para a pasta build           |
+|  `make run`            | Executa o programa da pasta build após a realização da compilação             
+
+É recomendável utilizar o comando **make clean** antes de partir para o **make** e sequencialmente **make run**.
